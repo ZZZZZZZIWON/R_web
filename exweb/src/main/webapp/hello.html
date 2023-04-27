@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HELLO</title>
+<style>
+a {color: black;}
+</style>
+</head>
+<body>
+	<h1>Hello HTML!!!</h1>
+	<!--<a href="http://Localhost:8000/exweb/param.do?x=포로리&y=너부리">ParamServlet 실행 링크</a>  -->
+	<a href="param.do?x=포로리&y=너부리">ParamServlet 실행 링크</a>	
+
+	<!--http://localhost:8000/exweb/hello.html  주소 지정시, 현재문서와 컴퓨터주소(IP)부터 폴더까지 동일하면 파일명만 지정 가능  -->
+	
+	<!-- form element 내부에 있는 submit 버튼을 클릭하면,
+	해당 form element의 action 속성값으로 지정한 주소로 이동(=요청 전송)
+	요청 전송시, form 내부에 있는 입력요소들의 name과 value 속성값을
+	파라미터명과 파라미터값으로 포함(추가)하여 함께 전송-->
+	
+	<!-- form element의 method 속성값으로 요청 방식을 지정 가능 
+	요청 방식(= HTTP method = HTTP command)에는 GET, POST, PUT, DELETE, ... 존재
+	form element의 method 속성값에는 GET, POST 지정 가능(생략시 기본값은 GET) -->
+	 	
+	 <!-- 웹브라우저 주소창에 직접 입력한 경우, 링크(<a>)를 클릭한 경우, 요청방식은 GET -->
+	 <!-- GET 방식 요청 전송시, 파라미터는 주소 뒤에 "?파라미터명=파라미터값" 형태로 붙어서 전송
+	 POST 방식 요청 전송시, 파라미터는 주소를 포함한 요청헤더가 아닌 요청 메세지 본문에 담겨서 전송 -->
+	 <!-- POST 방식으로 전송하면, 보안상 유리하고 파라미터의 길이 제한이 없는 장점 존재 -->
+	 
+	 <h2>GET 방식 요청 전송</h2>
+	<form action="/exweb/param.do" method="get">
+	 	<input type="text" name="x" value="포로리"/> 
+	 	<input type="text" name="y" value="너부리"/> <br>
+		<input type="submit">
+	</form>
+	
+	<h2>POST 방식 요청 전송</h2>
+	<form action="/exweb/param.do" method="post">
+	 	<input type="text" name="x" value="포로리"/> 
+	 	<input type="text" name="y" value="너부리"/> <br>
+		<input type="submit">
+	</form>
+
+	<h2>계산기</h2>
+	<form action="/exweb/calc.do" method="post">
+	 	x : <input type="number" name="x"  value="0"/> 
+	 	<select name = "op">
+	 	<option value = "plus">+</option>
+	 	<option value = "min">-</option>
+	 	<option value = "mul">*</option>
+	 	<option value = "div">/</option>
+	 	</select>
+	 	y : <input type="number" name="y" value="0"/> <br>
+		<input type="submit">
+	</form>
+	
+	<h2>원-달러변환</h2>
+	<form action="/exweb/dollar" method="get">
+		금액 : <input type="number" name="num" value="0"/>
+		<select name = "unit">
+	 	<option value = "won">원</option>
+	 	<option value = "dollar">달러</option>
+	 	</select>
+		<input type="submit"/>
+	</form>
+	
+	
+	
+<!-- 	금액을 입력하고 원을 선택한 후  submit 버튼을 클릭하면
+	화면에 "000원 = 000달러"라고 출력되고
+	금액을 입력하고 "달러"를 선택한 후 submit 버튼을 클릭하면
+	화면에 "000달러 = 000원"이라고 출력되도록 ConvServlet클래스를 변경하시오.
+	1달러=1287원 -->
+<!-- 	x, y 값에 2와 3을 각각 입력하고 *를 선택한 후 submit 버튼을 클릭하면, 
+	화면에 "2 * 3 = 6"라고 출력되도록 CalServlet 클래스를 구현하세요
+ -->
+	
+	<!-- <초기의 의도>
+	GET	http://Localhost:8000/exweb/param.do 가져오기
+	POST http://Localhost:8000/exweb/param.do 저장
+	PUT http://Localhost:8000/exweb/param.do 변경,수정
+	DELETE http://Localhost:8000/exweb/param.do 서버에서 삭제-->	
+	
+	<h2>POST 방식 LifeServlet 요청 전송</h2>
+	<form action="/exweb/life.do" method="post">
+		<input type="submit">
+	</form>
+</body>
+</html>

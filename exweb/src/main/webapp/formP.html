@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>FORM</title>
+<style>
+
+</style>
+</head>
+<body>
+	<h1>폼 입력 테스트</h1>
+	<form action="/exweb/formP.do" method="post">
+	 	주문할 상품 : <!-- 파라미터 이름은 name, 파라미터 값은 value -->
+	 	<select name = "prod">
+	 	<option value = "shoes">신발</option>
+	 	<option value = "watch">시계</option>
+	 	<option value = "furniture">가구</option>
+	 	</select>
+	 	<br><br>
+	 	좋아하는 과일 :
+	 	<input type ="radio" name="fruit" value="berry"/> 딸기
+	 	<input type ="radio" name="fruit" value="peach"/> 복숭아
+	 	<input type ="radio" name="fruit" value="orange"/> 귤
+		<input type="submit"/>
+		<br><br>
+		음료 :
+		<input type = "checkbox" name="drink" value="coffee"> 커피
+		<input type = "checkbox" name="drink" value="greentea"> 녹차
+		<input type = "checkbox" name="drink" value="blacktea"> 홍차
+	</form>
+	<!-- 딸기를 선택하면 fruit=berry, 
+	복숭아를 선택하면 fruit=peach, 
+	귤을 선택하면 fruit=orange라고 파라미터를 전송하도록 구현하세요. -->
+	
+	<!-- 커피를 선택하면 drink=coffee, 
+	녹차를 선택하면 fruit=greentea, 
+	홍차을 선택하면 fruit=blacktea라고 파라미터를 전송하도록 구현하세요. -->
+	
+	<!-- submit 버튼을 클릭하면,
+	선택한 상품의 사진
+	선택한 과일의 이름 ("berry", peach", "orange")
+	선택한 음료의 이름 ("coffee", greentea", "blacktea")
+	이 화면에 출력되도록 FormServlet 클래스를 변경하세요.
+	상품사진의 주소는
+	신발은 http://api.lorem.space/image/shoes?w=150&h=150
+	시계는 http://api.lorem.space/image/watch?w=150&h=150
+	가구는 http://api.lorem.space/image/furniture?w=150&h=150
+	 -->
+	
+</body>
+</html>
