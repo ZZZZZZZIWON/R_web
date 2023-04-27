@@ -50,6 +50,9 @@ public class MemListServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		
+		// 자바 내에서 html을 사용하기 힘들기 때문에
+		// html 안에서 자바를 사용하기로 함 -> jsp
 		List<MemberVo> list = memberDao.selectMemberList(); // 이 DB관련 method를 실행시키는 코드
 
 		resp.setCharacterEncoding("UTF-8");

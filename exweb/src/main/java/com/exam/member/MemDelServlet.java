@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/member/del.do")
 public class MemDelServlet extends HttpServlet {
-	private MemberDaoJdbc memberDao = new MemberDaoJdbc();
+	private MemberDao memberDao = new MemberDaoBatis();
 //	String url = "jdbc:oracle:thin:@localhost:1521:xe"; // 데이터베이스 서버 주소
 //	String user = "web"; // 데이터베이스 접속 아이디
 //	String password = "web01"; // 데이터베이스 접속 비밀번호

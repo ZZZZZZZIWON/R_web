@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/member/add.do")
 public class MemAddServlet extends HttpServlet {
 	
-	private MemberDaoJdbc memberDao = new MemberDaoJdbc();
+	private MemberDao memberDao = new MemberDaoBatis();
 //	{
 //		try {
 //			Class.forName("oracle.jdbc.OracleDriver");

@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+// MemberDaoBatis 안에서 mybatis를 이용해서 SQL문을 편하게 실행 가능
+// 더는 사용하지 X
 public class MemberDaoJdbc implements MemberDao { // DAO = DATA ACCESS OBJECT
 						 // DB테이블에 있는 데이터를 자바 객체(MemberDao)에 담아서 반환
 						 
