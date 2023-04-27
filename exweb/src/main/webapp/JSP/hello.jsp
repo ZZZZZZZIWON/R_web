@@ -1,5 +1,5 @@
 <%@page import="com.exam.member.MemberVo"%> <%-- 자바의 import문으로 표현 --%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" 
+<%@ page language="java" contentType="text/html; charset=utf-8" 
     pageEncoding="EUC-KR"%>
     <%-- contentType="text/html; charset=EUC-KR" <- setCharacterEncoding이랑 동일 --%>
     
@@ -39,7 +39,7 @@ JSP 구성요소
 	out.println("출력할 내용");
  	out.println(session == request.getSession()); // true
  	out.println(application == getServletContext()); // true
- 	out.println(config == getServletConfig()); // true
+ 	out.println(config == getServletConfig()); // true 
  	// 이미 변수에 담아놨기 때문에 이름만 호출해서 사용 가능
  	
  	// JSP에는 서버에 저장할 수 있는 게 하나 추가 -> pagecontext 
