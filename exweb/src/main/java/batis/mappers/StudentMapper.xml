@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.exam.student.StudentDao">
+	
+	<resultMap type="com.exam.student.StudentVo" id="StudentMap">
+		<id property="stuNo" column="stu_no" /> <!-- 하나의 테이블에서는 result로 해도 ok -->
+		<result property="stuName" column="stu_name" />
+		<result property="stuScore" column="stu_score" />
+	</resultMap>
+	
+	 <select id="selectStudentList" resultType="StudentVo" >
+	
+		SELECT stu_no, stu_name, stu_score FROM STUDENT ORDER BY stu_no 
+	</select>
+	
+	<insert id="insertStudent" parameterType="com.exam.student.StudentVo"> 
+	
+	INSERT INTO STUDENT( STU_NO, STU_NAME, STU_SCORE) VALUES(#{stuNo}, #{stuName}, #{stuScore})
+	</insert>
+
+	<delete id="deleteStudent" parameterType="java.lang.String">
+		DELETE FROM STUDENT WHERE STU_NO = #{stuNo}
+	</delete>
+	
+</mapper>

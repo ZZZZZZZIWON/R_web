@@ -14,29 +14,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/student/add.do")
-public class StuAddServlet extends HttpServlet {
-
-	
+@WebServlet("/student/del.do")
+public class StuDelServlet extends HttpServlet {
 	private StudentDao studentDao = new StudentDaoBatis();
-	
+
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html");
 		
-		StudentVo vo = new StudentVo();
-		vo.setStuNo(req.getParameter("stuNo"));
-		vo.setStuName(req.getParameter("stuName"));
-		vo.setStuScore(Integer.parseInt(req.getParameter("stuScore")));
+		String stuNo = req.getParameter("stuNo"); // 컬럼이 늘어나도 상관 없기 때문에 객체에 담을 필요 X
 		
-		int n = studentDao.insertStudent(vo);
+		int n = studentDao.deleteStudent(stuNo);
 		
-		System.out.println(n + "명의 학생 추가");
+		System.out.println(n + "명의 회원 삭제");
 		
-		resp.sendRedirect(req.getContextPath() + "/student/list.do");
-		
-		
+		resp.sendRedirect(req.getContextPath()+ "/student/list.do");
 	}
 }
