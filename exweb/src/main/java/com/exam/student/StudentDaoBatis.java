@@ -76,7 +76,6 @@ public class StudentDaoBatis implements StudentDao { // 구현이 되지 않은 
 		}
 		return num;
 	}
-	
-	public int updateStudent
-
 }
+	
+	

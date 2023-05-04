@@ -13,6 +13,5 @@ public interface StudentDao {
 	// MemDelServlet에서 사용
 	int deleteStudent(String stuNo);
 	
-	int updateStudent(String stuNo);
 
 }
