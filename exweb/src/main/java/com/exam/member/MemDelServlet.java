@@ -30,8 +30,8 @@ public class MemDelServlet extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //		req.setCharacterEncoding("UTF-8"); 필터로 이동
 
-		resp.setCharacterEncoding("UTF-8");
-		resp.setContentType("text/html");
+//		resp.setCharacterEncoding("UTF-8");
+//		resp.setContentType("text/html");
 		
 		String memId = req.getParameter("memId"); // 컬럼이 늘어나도 상관 없기 때문에 객체에 담을 필요 X
 		

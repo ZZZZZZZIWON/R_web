@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>JSTL</title>
 </head>
 <body>
@@ -123,12 +123,21 @@
 	
 	현재 JSP파일에서 JSTL 국제화 태그가 사용할 로케일 강제 지정
 	지정하지 않으면, Accept-Language 요청 헤더 값 사용)
+	<%-- <fmt:setLocale value="en_US"/><br> --%>
+	<fmt:formatDate value="${d}" type="both"  dateStyle="full" timeStyle="full"/><br>
+	<fmt:formatNumber value="${n}" type="currency" />
+	
 	
 	메세지를 저장한 property파일이 "클래스패스/폴더명/번들명_언어_국가.properties"일 떄,
 	basename은 "폴더명.번들명"
 	<fmt:setBundle basename="msg" var="mb"/>
-	<fmt:message bundle="${mb}" key="str"/>
+	<fmt:message bundle="${mb}" key="str"/><br><br>
+
 	
+	<fmt:message bundle="${mb}" key="str2">
+		<fmt:param value="JSP"/>
+		<fmt:param value="!!!"/>
+	</fmt:message>
 	
-</body>
+	</body>
 </html>

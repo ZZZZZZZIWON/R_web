@@ -77,4 +77,14 @@ public class MemberDaoBatis implements MemberDao { // 구현이 되지 않은 �
 		return num;
 	}
 
+	@Override
+	public MemberVo selectMember(String memId) {
+		MemberVo vo = null; // 초기값으로 null을 줘도 되고 다른 list에 저장해도 됨(new ArrayList<MemberVo>();
+		try (SqlSession session = sqlSessionFactory.openSession()) { // getConnection이랑 비슷한 역할
+			
+			vo = session.selectOne("com.exam.member.MemberDao.selectMember", memId);
+		}
+		return vo;
+	}
+
 }

@@ -114,11 +114,11 @@ if(v == null) {
   
  <% 
  	/* request.getRequestDispatcher("/menu.jsp").forward(request, response); */ 
-   	request.getRequestDispatcher("/JSP/menu.jsp").include(request, response); 
+   	request.getRequestDispatcher("/menu.jsp").include(request, response); 
  %>
  <%--<jsp:forward page="/menu.jsp"></jsp:forward>--%>
   <jsp:include page="/menu.jsp"></jsp:include> 
-  
+  s
   
   <h1>EL</h1>
   ${123} ${456.789 } ${"문자열1"} ${'문자열2'} ${true } ${false } ${null} <br>

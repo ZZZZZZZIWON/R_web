@@ -1,13 +1,6 @@
 package com.exam.member;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -55,52 +48,55 @@ public class MemListServlet extends HttpServlet {
 		// html 안에서 자바를 사용하기로 함 -> jsp
 		List<MemberVo> list = memberDao.selectMemberList(); // 이 DB관련 method를 실행시키는 코드
 
-		resp.setCharacterEncoding("UTF-8");
-		resp.setContentType("text/html");
-		PrintWriter out = resp.getWriter();
-
-		out.println("<html>                   ");
-		out.println("<!DOCTYPE html>          ");
-		out.println("<head>                   ");
-		out.println("<meta charset=\"UTF-8\"> ");
-		out.println("<title>회원관리</title>     ");
-		out.println("<style>");
-		out.println("table {padding:10px width:100% border-top:1px solid #444444 border-collapse: collapse}");
-		out.println("th, td {padding:10px border-bottom:1px solid #444444 border-left:1px solid #444444}");
-		out.println("button {margin-top:5px");
-		out.println("margin-left:20px}");
-		out.println("</style>                  ");
-		out.println("</head>                  ");
-		out.println("<body>                   ");
-		out.println("<h1>회원목록</h1>                ");
-		//out.println("<input type ='button' value='회원가입' onclick='window.open('http://localhost:8000/exweb/member/addform.do')'>");
-		//out.println("<button type = 'button' onclick='window.open('http://localhost:8000/exweb/member/addform.do')'>회원가입</button> ");
-		//out.println("<a href='http://localhost:8000/exweb/member/addform.do'>회원추가</a>");
-
-		out.println("<table><tr><th>아이디</th><th>비밀번호</th><th>이름</th><th>포인트</th><th>삭제</th></tr>");
-		// list에 있는 회원 정보를 하나씩 꺼냄
-		for (MemberVo vo : list) {
-			out.println("<tr><td>" + vo.getMemId()+"</td><td>" + vo.getMemPass() + "</td><td>" + vo.getMemName() + "</td><td>" + vo.getMemPoint() + "</td>");
-//			out.println("<p>" + vo.getMemId() + " : " + vo.getMemPass() + " : " + vo.getMemName() + " : " + vo.getMemPoint());
-			out.println("<td><a href='" + req.getContextPath() + "/member/del.do?memId=" + vo.getMemId() + "'><button type = 'button'>삭제</button></a></td></tr>");
-//			out.println("</p>");
+		req.setAttribute("memberList", list);
+		req.getRequestDispatcher("/WEB-INF/views/member/memList.jsp").forward(req, resp);
 		
-		}
-//		out.println("<button type=\"button\" onclick=\"location.href='" + req.getContextPath() + "/member/list.do'\">회원목록</button> ");
-//		  out.println("<form method=\"POST\" name=\"form\">");
-//	        out.println("<button type=\"button\" onclick=\"location.href='" + req.getContextPath() + "/member/list.do\">회원목록</button>");
-//	    </form>
-		
-		// 밑에 출력하는 부분을 밖으로 빼려면 while문 안에 있는 변수를 받을 수 있어야 함(에러)
-		// So, 단일변수에 저장하는 것이 아니라 List에 저장해놔야 함
-		// memId, memPass, memName, memPoint(문자열, 문자열, 문자열, 정수)를 한 번에 저장할 수 있어야 함 -> 객체 생성
-		// 클래스를 정의하는 이유 1 현실에 존재하는 사물을 객체로 생성 2 원하는 데이터 타입으로 저장
-		// 보통 member정보를 Member or MemberVO or MemberDTO라는 클래스에 저장
-		out.println("</table>");
-		out.println("<a href='" + req.getContextPath() + "/member/addform.do'><button type='button'>회원추가</button></a>                ");
-		out.println("</body> </html>                  ");
-
-	}
+//		resp.setCharacterEncoding("UTF-8");
+//		resp.setContentType("text/html");
+//		PrintWriter out = resp.getWriter();
+//
+//		out.println("<html>                   ");
+//		out.println("<!DOCTYPE html>          ");
+//		out.println("<head>                   ");
+//		out.println("<meta charset=\"UTF-8\"> ");
+//		out.println("<title>회원관리</title>     ");
+//		out.println("<style>");
+//		out.println("table {padding:10px width:100% border-top:1px solid #444444 border-collapse: collapse}");
+//		out.println("th, td {padding:10px border-bottom:1px solid #444444 border-left:1px solid #444444}");
+//		out.println("button {margin-top:5px");
+//		out.println("margin-left:20px}");
+//		out.println("</style>                  ");
+//		out.println("</head>                  ");
+//		out.println("<body>                   ");
+//		out.println("<h1>회원목록</h1>                ");
+//		//out.println("<input type ='button' value='회원가입' onclick='window.open('http://localhost:8000/exweb/member/addform.do')'>");
+//		//out.println("<button type = 'button' onclick='window.open('http://localhost:8000/exweb/member/addform.do')'>회원가입</button> ");
+//		//out.println("<a href='http://localhost:8000/exweb/member/addform.do'>회원추가</a>");
+//
+//		out.println("<table><tr><th>아이디</th><th>비밀번호</th><th>이름</th><th>포인트</th><th>삭제</th></tr>");
+//		// list에 있는 회원 정보를 하나씩 꺼냄
+//		for (MemberVo vo : list) {
+//			out.println("<tr><td>" + vo.getMemId()+"</td><td>" + vo.getMemPass() + "</td><td>" + vo.getMemName() + "</td><td>" + vo.getMemPoint() + "</td>");
+////			out.println("<p>" + vo.getMemId() + " : " + vo.getMemPass() + " : " + vo.getMemName() + " : " + vo.getMemPoint());
+//			out.println("<td><a href='" + req.getContextPath() + "/member/del.do?memId=" + vo.getMemId() + "'><button type = 'button'>삭제</button></a></td></tr>");
+////			out.println("</p>");
+//		
+//		}
+////		out.println("<button type=\"button\" onclick=\"location.href='" + req.getContextPath() + "/member/list.do'\">회원목록</button> ");
+////		  out.println("<form method=\"POST\" name=\"form\">");
+////	        out.println("<button type=\"button\" onclick=\"location.href='" + req.getContextPath() + "/member/list.do\">회원목록</button>");
+////	    </form>
+//		
+//		// 밑에 출력하는 부분을 밖으로 빼려면 while문 안에 있는 변수를 받을 수 있어야 함(에러)
+//		// So, 단일변수에 저장하는 것이 아니라 List에 저장해놔야 함
+//		// memId, memPass, memName, memPoint(문자열, 문자열, 문자열, 정수)를 한 번에 저장할 수 있어야 함 -> 객체 생성
+//		// 클래스를 정의하는 이유 1 현실에 존재하는 사물을 객체로 생성 2 원하는 데이터 타입으로 저장
+//		// 보통 member정보를 Member or MemberVO or MemberDTO라는 클래스에 저장
+//		out.println("</table>");
+//		out.println("<a href='" + req.getContextPath() + "/member/addform.do'><button type='button'>회원추가</button></a>                ");
+//		out.println("</body> </html>                  ");
+//
+//	}
 
 //	public List<MemberVo> selectMemberList() { 
 //		//[데이터베이스 관련 코드 분리]
@@ -139,4 +135,5 @@ public class MemListServlet extends HttpServlet {
 //		}
 //		return list;
 //	}
+}
 }

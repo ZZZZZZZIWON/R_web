@@ -13,4 +13,7 @@ public interface MemberDao {
 	// MemDelServlet에서 사용
 	int deleteMember(String memId);
 
+	// MemEditServlet에서 사용
+	MemberVo selectMember(String string);
+
 }

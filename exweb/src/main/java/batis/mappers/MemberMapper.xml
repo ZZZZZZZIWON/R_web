@@ -69,4 +69,11 @@
 		<!-- MemberVo객체를 가진 insert는 정확하게 기입해줘야 함(클래스에는 member가 여러개이기때문에) -->
 	</delete>
 	
+	<select id="selectMember" resultType="MemberVo" >
+	
+		SELECT mem_id, mem_pass, mem_name, mem_point FROM MEMBER 
+		WHERE mem_id = #{memId}		
+	
+	</select>
+	
 </mapper>

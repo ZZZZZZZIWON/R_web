@@ -18,7 +18,16 @@ import javax.servlet.http.HttpServletResponse;
 public class MemAddServlet extends HttpServlet {
 	
 	private MemberDao memberDao = new MemberDaoBatis();
-//	{
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.getRequestDispatcher("/WEB-INF/views/member/memAdd.jsp").forward(req, resp);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	
+	{
 //		try {
 //			Class.forName("oracle.jdbc.OracleDriver");
 //		} catch (ClassNotFoundException e) {
@@ -33,13 +42,13 @@ public class MemAddServlet extends HttpServlet {
 //	String password = "web01"; // 데이터베이스 접속 비밀번호
 	
 	
-	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//	@Override
+//	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //		req.setCharacterEncoding("UTF-8");  필터로 이동
 		// 주석 처리가 되었기 때문에 post방식의 한글 파라미터가 전송 X
 
-		resp.setCharacterEncoding("UTF-8");
-		resp.setContentType("text/html");
+//		resp.setCharacterEncoding("UTF-8");
+//		resp.setContentType("text/html");
 		
 		// ? 파라미터를 따로 관리하는 것보다 하나의 객체에서 관리해야 효율적
 		MemberVo vo = new MemberVo(); // 파라미터의 갯수를 1개로 유지
@@ -121,4 +130,5 @@ public class MemAddServlet extends HttpServlet {
 //		}
 //		return n;
 //	}
+}
 }
