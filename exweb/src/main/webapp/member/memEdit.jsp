@@ -42,14 +42,12 @@ div {
 </style>
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/menu.jsp"/>
-<hr>
 	<div class="body">
-	<h1>회원변경</h1>
-	<form action='${pageContext.request.contextPath}/member/edit.do' method='post' />
+	<h1>회원추가</h1>
+	<form action='${pageContext.request.contextPath}/member/add.do' method='post' />
 	<div class="form">
 				<label for="memId">ID :</label>
-				<input type='text' name='memId' id="memId" value='<c:out value="${mvo.memId}"/>' readonly="readonly"><br />
+				<input type='text' name='memId' id="memId" value='<c:out value="${mvo.memId}"/>'><br />
 
 				<label for="memPass">PASSWORD :</label>
 				<input type='password' name='memPass' id="memPass" value='<c:out value="${mvo.memPass}"/>'><br />
@@ -58,9 +56,9 @@ div {
 				<input type='text' name='memName' id="memName" value='<c:out value="${mvo.memName}"/>'><br />
 
 				<label for="memPoint">POINT :</label>
-				<input type='number' name='memPoint' id="memPoint" value='${mvo.memPoint}'><br />
+				<input type='number' name='memPoint' id="memPoint" value='${mvo.memPoint} }'><br />
 			</div>
-	<input type='submit' value="수정">
+	<input type='submit' value="등록">
 	</form>
 	</div>
 </body>

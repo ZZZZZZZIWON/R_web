@@ -38,6 +38,8 @@ div {
 </style>
 </head>
 <body>
+<jsp:include page="/WEB-INF/views/menu.jsp"/>
+<hr>
 	<div class="body">
 	<h1>회원추가</h1>
 	<form action='${pageContext.request.contextPath}/member/add.do' method='post' />

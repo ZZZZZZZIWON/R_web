@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 // 회원목록 화면에 "회원추가" 링크를 추가하고, 
 // 그 링크를 클릭하면, 회원정보를 입력하는 폼(/add.form.do) 화면으로 이동하도록
@@ -17,7 +18,6 @@ import javax.servlet.http.HttpServletResponse;
 // 그 링크를 클릭하면, 회원목록 화면(/add.list.do)으로 이동하도록
 // MemAddServlet 클래스를 변경하세요.
 
-
 //회원목록의 각 회원정보 옆에 "삭제"링크를 출력하고,
 //링크를 클릭하면 해당 회원이 삭제되도록 
 //MemListServlet
@@ -26,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/member/list.do")
 public class MemListServlet extends HttpServlet {
 	private MemberDao memberDao = new MemberDaoBatis(); // service 안에 있으면 계속 요청 but, 한번만 실행하면 됨
-															// 인터페이스를 사용했기 때문에 MemberDao는 바꿀 필요 X
+														// 인터페이스를 사용했기 때문에 MemberDao는 바꿀 필요 X
 
 //	{
 //		try {
@@ -41,8 +41,8 @@ public class MemListServlet extends HttpServlet {
 //	String password = "web01"; // 데이터베이스 접속 비밀번호
 
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
 		
 		// 자바 내에서 html을 사용하기 힘들기 때문에
 		// html 안에서 자바를 사용하기로 함 -> jsp
@@ -50,7 +50,7 @@ public class MemListServlet extends HttpServlet {
 
 		req.setAttribute("memberList", list);
 		req.getRequestDispatcher("/WEB-INF/views/member/memList.jsp").forward(req, resp);
-		
+
 //		resp.setCharacterEncoding("UTF-8");
 //		resp.setContentType("text/html");
 //		PrintWriter out = resp.getWriter();
@@ -135,5 +135,5 @@ public class MemListServlet extends HttpServlet {
 //		}
 //		return list;
 //	}
-}
+	}
 }

@@ -31,7 +31,7 @@
 	
 	<!--  <select id="selectMemberList" resultMap="MemberMap"> -->
 		<!-- MemberMap이라는 id가 가리키는 resultMap을 불러옴 -->
-		SELECT mem_id, mem_pass, mem_name, mem_point FROM MEMBER ORDER BY mem_id 
+		SELECT mem_id,  mem_name, mem_point FROM MEMBER ORDER BY mem_id 
 		<!-- 별명을 붙이지 않고도 할 수 있는 방법 O -> resultmap 이용하기-->
 		<!--  일일히 별명을 붙여주고나 resultmap으로 이용하기 -->
 		<!--  단순하게 표기법만 다를 때, mapUnderscoreToCamelCase만 활성화시켜주면 자동으로 반영 -->
@@ -71,9 +71,25 @@
 	
 	<select id="selectMember" resultType="MemberVo" >
 	
-		SELECT mem_id, mem_pass, mem_name, mem_point FROM MEMBER 
+		SELECT mem_id, mem_name, mem_point FROM MEMBER 
 		WHERE mem_id = #{memId}		
 	
 	</select>
 	
+	<update id="updateMember" parameterType="MemberVo">
+	
+		UPDATE MEMBER 
+		SET mem_name = #{memName},
+			mem_point = #{memPoint}
+		WHERE mem_id = #{memId}		
+		
+	</update>
+	
+	<select id="selectLogin" resultType="MemberVo">
+	
+		SELECT mem_id, mem_name, mem_point
+		FROM MEMBER
+		WHERE mem_id = #{memId} AND mem_pass = #{memPass}
+		
+	</select>
 </mapper>

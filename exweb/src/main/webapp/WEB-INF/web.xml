@@ -25,15 +25,15 @@
 	</servlet-mapping>
 
 	<!-- <servlet> -->
-	<!-- 	<servlet-name>loader</servlet-name> -->
-	<!-- 	<servlet-class>com.exam.comm.DriverServlet</servlet-class> -->
-	
+	<!-- <servlet-name>loader</servlet-name> -->
+	<!-- <servlet-class>com.exam.comm.DriverServlet</servlet-class> -->
+
 	<!-- 서블릿에서 읽을 수 있는 데이터를 이름-값 형태로 설정 가능 -->
 	<!-- <init-param> -->
-	<!-- 	<param-name>driver</param-name> -->
-	<!-- 	<param-value>oracle.jdbc.OracleDriver</param-value> -->
+	<!-- <param-name>driver</param-name> -->
+	<!-- <param-value>oracle.jdbc.OracleDriver</param-value> -->
 	<!-- </init-param> -->
-	
+
 	<!-- load-on-startup 값을 0이상의 정수로 지정하면, -->
 	<!-- 서버(톰캣) 시작시 이 서블릿 객체를 미리 생성(숫자 오름차순으로 생성) -->
 	<!-- 음수로 지정하면, 서버(톰캣)이 필요하다고 판단할 때 서블릿 객체를 생성 -->
@@ -41,14 +41,14 @@
 
 	<!-- <load-on-startup>0</load-on-startup> -->
 	<!-- </servlet> -->
-	
+
 	<!-- <servlet-mapping> -->
 	<!-- <servlet-name>loader</servlet-name> -->
 	<!-- <url-pattern>/load</url-pattern> -->
 	<!-- </servlet-mapping> -->
 
-<!-- 	웹 애플리케이션 전체(모든 서블릿, 리스너, 필터 등)에서 사용 가능한 데이터를 이름-값 형태로 설정 -->
-<!-- 	서블릿 컨텍스트 객체에 저장됨 -->
+	<!-- 웹 애플리케이션 전체(모든 서블릿, 리스너, 필터 등)에서 사용 가능한 데이터를 이름-값 형태로 설정 -->
+	<!-- 서블릿 컨텍스트 객체에 저장됨 -->
 	<context-param>
 		<param-name>driver</param-name>
 		<param-value>oracle.jdbc.OracleDriver</param-value>
@@ -62,14 +62,27 @@
 		<filter-name>encFilter</filter-name>
 		<filter-class>com.exam.comm.CharacterEncodingFilter</filter-class>
 		<init-param>
-		<param-name>encoding</param-name> <!-- 나중에 사용할 때 이 이름만 똑같이 지정해주면 됨 -->
-		<param-value>UTF-8</param-value>
+			<param-name>encoding</param-name> <!-- 나중에 사용할 때 이 이름만 똑같이 지정해주면 됨 -->
+			<param-value>UTF-8</param-value>
 		</init-param>
 	</filter>
 
 
 	<filter-mapping>
 		<filter-name>encFilter</filter-name>
-		<url-pattern>/*</url-pattern> <!-- 프로젝트 내 모든 서블릿 실행시 필터 먼저 실행 -->
-			</filter-mapping>
+		<url-pattern>/*</url-pattern> 
+	</filter-mapping>
+
+	<filter>
+		<filter-name>login</filter-name>
+		<filter-class>com.exam.comm.LoginFilter</filter-class>
+	</filter>
+
+
+	<filter-mapping>
+		<filter-name>login</filter-name>
+		<url-pattern>/*</url-pattern> 
+	</filter-mapping>
+
+
 </web-app>

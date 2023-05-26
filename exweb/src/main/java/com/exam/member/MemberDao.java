@@ -16,4 +16,9 @@ public interface MemberDao {
 	// MemEditServlet에서 사용
 	MemberVo selectMember(String string);
 
+	// MemEditServlet에서 사용
+	int updateMember(MemberVo vo);
+
+	// LoginServlet에서 사용
+	MemberVo selectLogin(MemberVo vo);
 }

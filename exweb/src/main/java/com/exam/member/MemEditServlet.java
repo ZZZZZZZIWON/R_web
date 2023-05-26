@@ -32,27 +32,21 @@ public class MemEditServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
-	{
-		
-		List<MemberVo> list = memberDao.selectMemberList(); // 이 DB관련 method를 실행시키는 코드
-
-		req.setAttribute("memberList", list);
-		req.getRequestDispatcher("/WEB-INF/views/member/memList.jsp").forward(req, resp);
+	
 //		
 		MemberVo vo = new MemberVo(); // 파라미터의 갯수를 1개로 유지
 		vo.setMemId(req.getParameter("memId")); // 요청 파라미터값 읽어온 것을 저장
-		vo.setMemPass(req.getParameter("memPass")); // 요청 파라미터값 읽어온 것을 저장
 		vo.setMemName(req.getParameter("memName")); // 요청 파라미터값 읽어온 것을 저장
 		vo.setMemPoint(Integer.parseInt(req.getParameter("memPoint"))); // 요청 파라미터값 읽어온 것을 저장
 						
 		
-		int n = memberDao.insertMember(vo);
+		int n = memberDao.updateMember(vo);
 		
-		System.out.println(n + "명의 회원 추가"); 
-		
+		System.out.println(n + "명의 회원 변경"); 
+				
 
 		resp.sendRedirect(req.getContextPath()+ "/member/list.do");
 		
-}
+
 	}
 }

@@ -54,6 +54,10 @@ a {
 </style>
 </head>
 <body>
+<jsp:include page="/WEB-INF/views/menu.jsp"/>
+
+<hr>
+
 	<div class="body">
 	<h1>회원목록</h1>
 
@@ -82,7 +86,6 @@ a {
 		</c:forEach>
 		
 	</table>
-	<a href='<c:url value="/member/add.do"/>' class='btn-reg'><button type='button' >회원추가</button></a>
 	</div>
 	<script>
 		$(document).ready(function(){
