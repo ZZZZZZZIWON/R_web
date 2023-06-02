@@ -81,8 +81,17 @@
 
 	<filter-mapping>
 		<filter-name>login</filter-name>
-		<url-pattern>/*</url-pattern> 
+		<url-pattern>*.do</url-pattern> 
 	</filter-mapping>
 
+	<error-page>	
+		<error-code>404</error-code>
+		<location>/err404.jsp</location>
+	</error-page>
+
+	<error-page>
+		<exception-type>java.lang.NullPointerException</exception-type>
+		<location>/errNull.jsp</location>
+	</error-page>
 
 </web-app>

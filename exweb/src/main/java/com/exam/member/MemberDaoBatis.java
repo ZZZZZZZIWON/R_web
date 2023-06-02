@@ -9,22 +9,20 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import com.exam.comm.MyBatisUtils;
+
 public class MemberDaoBatis implements MemberDao { // 구현이 되지 않은 인터페이스 MemberDao의 method들 정의하기
 
-	SqlSessionFactory sqlSessionFactory;
-	{
-		try {
-			String resource = "batis/mybatis-config.xml"; // 마이바티스 전체 설정파일 위치_클래스 path 기준(이름이나 경로를 바꿀 때 변경)
-			InputStream inputStream = Resources.getResourceAsStream(resource);
-			// 설정파일의 내용대로 SqlSessionFactory(마이바티스 본체)를 생성
-			sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	} // 자동 import 단축키
-		// ctrl + shift + o
+	private MemberDaoBatis() {}
+	
+	private static MemberDao memberDao = new MemberDaoBatis();
+	public static MemberDao getInstance() {
+		return memberDao;
+	}
+	
+	private SqlSessionFactory sqlSessionFactory = MyBatisUtils.getSqlSessionFactory();
+	
+	
 
 	@Override
 	public List<MemberVo> selectMemberList() {

@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/member/add.do")
 public class MemAddServlet extends HttpServlet {
 	
-	private MemberDao memberDao = new MemberDaoBatis();
+	private MemberService memberService = MemberServiceImpl.getInstance();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -58,7 +58,7 @@ public class MemAddServlet extends HttpServlet {
 		vo.setMemPoint(Integer.parseInt(req.getParameter("memPoint"))); // 요청 파라미터값 읽어온 것을 저장
 						
 		
-		int n = memberDao.insertMember(vo);
+		int n = memberService.insertMember(vo);
 		
 		System.out.println(n + "명의 회원 추가"); // n 변수를 사용하는 코드가 있어야 return값으로 n을 반환할 수 있음
 		

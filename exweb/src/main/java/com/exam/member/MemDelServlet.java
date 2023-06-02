@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/member/del.do")
 public class MemDelServlet extends HttpServlet {
-	private MemberDao memberDao = new MemberDaoBatis();
+	private MemberService memberService = MemberServiceImpl.getInstance();
 //	String url = "jdbc:oracle:thin:@localhost:1521:xe"; // 데이터베이스 서버 주소
 //	String user = "web"; // 데이터베이스 접속 아이디
 //	String password = "web01"; // 데이터베이스 접속 비밀번호
@@ -35,7 +35,7 @@ public class MemDelServlet extends HttpServlet {
 		
 		String memId = req.getParameter("memId"); // 컬럼이 늘어나도 상관 없기 때문에 객체에 담을 필요 X
 		
-		int n = memberDao.deleteMember(memId);
+		int n = memberService.deleteMember(memId);
 		
 		System.out.println(n + "명의 회원 삭제");
 		

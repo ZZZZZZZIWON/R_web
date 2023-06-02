@@ -25,7 +25,7 @@ import javax.servlet.http.HttpSession;
 //삭제 링크는 버튼으로
 @WebServlet("/member/list.do")
 public class MemListServlet extends HttpServlet {
-	private MemberDao memberDao = new MemberDaoBatis(); // service 안에 있으면 계속 요청 but, 한번만 실행하면 됨
+	private MemberService memberService = MemberServiceImpl.getInstance();// service 안에 있으면 계속 요청 but, 한번만 실행하면 됨
 														// 인터페이스를 사용했기 때문에 MemberDao는 바꿀 필요 X
 
 //	{
@@ -46,7 +46,7 @@ public class MemListServlet extends HttpServlet {
 		
 		// 자바 내에서 html을 사용하기 힘들기 때문에
 		// html 안에서 자바를 사용하기로 함 -> jsp
-		List<MemberVo> list = memberDao.selectMemberList(); // 이 DB관련 method를 실행시키는 코드
+		List<MemberVo> list = memberService.selectMemberList(); // 이 DB관련 method를 실행시키는 코드
 
 		req.setAttribute("memberList", list);
 		req.getRequestDispatcher("/WEB-INF/views/member/memList.jsp").forward(req, resp);

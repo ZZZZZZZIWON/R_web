@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/member/login.do")
 public class LoginServlet extends HttpServlet {
 	
-	private MemberDao memberDao = new MemberDaoBatis();
+	private MemberService memberService = MemberServiceImpl.getInstance();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 		vo.setMemId(req.getParameter("memId"));
 		vo.setMemPass(req.getParameter("memPass"));
 		
-		MemberVo mvo = memberDao.selectLogin(vo);
+		MemberVo mvo = memberService.selectLogin(vo);
 		
 	
 		if(mvo == null) { 
